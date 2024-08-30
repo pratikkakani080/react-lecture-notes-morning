@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/button";
 import { LOGIN_PAGE_NAME } from "../../utils";
+import { getStoredData, storeData } from "../../utils/storage";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -9,13 +10,29 @@ function Dashboard() {
   const [recipes, setRecipes] = useState({});
   const className_bgColor = "bgColor";
 
-  const handleClick = () => {
-    // navigate("/login");
-    setBgColor(bgColor === "green" ? "pink" : "green");
-    fetch("https://dummyjson.com/recipes")
+  useEffect(() => {
+    // write your logic here to execute on load
+    fetch("https://dummyjson.com/recipes?limit=50")
       .then((res) => res.json())
       .then((result) => setRecipes(result))
-      .catch();
+      .catch((err) => console.log(err));
+    console.log("component mounted*****", getStoredData("this is testing"));
+
+    // clean up function
+    return () => {
+      // write your logic here to execute while unloading
+      console.log("component unmounted*****");
+      // localStorage.clear();
+    };
+  }, [bgColor]);
+
+  const handleClick = () => {
+    // navigate("/login");
+    storeData("this is testing", { key1: 3 });
+    // sessionStorage.setItem
+    // sessionStorage.getItem
+    // sessionStorage.clear()
+    setBgColor(bgColor === "green" ? "pink" : "green");
   };
 
   return (
@@ -32,9 +49,16 @@ function Dashboard() {
         bgColor={bgColor}
         className={className_bgColor}
       />
-      {recipes.recipes?.map((el) => {
-        return <div key={el.id}>{el.name}</div>;
-      })}
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {recipes.recipes?.map((el) => {
+          return (
+            <div key={el.id} style={{ padding: "0 10px" }}>
+              <h4>{el.name}</h4>
+              <img src={el.image} alt="recipe_image" height={150} />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
