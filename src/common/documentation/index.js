@@ -18,3 +18,7 @@
 // Mount || load
 // Update
 // Unmount
+
+// Short hand property
+const key = 'value'
+const obj = { key }

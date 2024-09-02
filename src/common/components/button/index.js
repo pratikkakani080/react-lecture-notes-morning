@@ -3,37 +3,24 @@ import { useNavigate } from "react-router-dom";
 import "./button.css";
 
 export default function Button({
-  redirectPageName,
   bgColor,
   textColor,
   className,
+  onClick,
+  ButtonText
 }) {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    // if (redirectPageName === "Login") {
-    //   navigate("/dashbaord");
-    // } else {
-    //   navigate("/login");
-    // }
-    // redirectPageName === "Login" ? "/dashboard" : "/login"
-    navigate(`/${redirectPageName.toLowerCase()}`);
-  };
-
   return (
     <div>
-      {redirectPageName && (
         <button
           style={{
-            backgroundColor: bgColor || "red",
+            backgroundColor: bgColor || "grey",
             color: textColor || "white",
           }}
           className={className}
-          onClick={handleClick}
+          onClick={onClick}
         >
-          Click to redirect to {redirectPageName || "test"}
+          {ButtonText}
         </button>
-      )}
     </div>
   );
 }

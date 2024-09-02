@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/button";
-import { LOGIN_PAGE_NAME } from "../../utils";
 import { getStoredData, storeData } from "../../utils/storage";
 
 function Dashboard() {
@@ -45,9 +44,9 @@ function Dashboard() {
       <br />
       <button onClick={handleClick}>Redirect to login</button>
       <Button
-        redirectPageName={LOGIN_PAGE_NAME}
         bgColor={bgColor}
         className={className_bgColor}
+        onClick={() => navigate(`/login`)}
       />
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {recipes.recipes?.map((el) => {
