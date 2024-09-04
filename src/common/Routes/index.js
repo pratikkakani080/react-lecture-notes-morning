@@ -12,6 +12,7 @@ import Users from "../modules/users";
 import Blog from "../modules/blog";
 import BlogDetails from "../modules/blog/blogDetails";
 import Layout from "../components/layout";
+import Parent from "../modules/parent";
 
 // BrowserRouter
 // Router
@@ -38,6 +39,10 @@ function Routing() {
         {
           path: "/blog/blog-details",
           element: <BlogDetails />,
+        },
+        {
+          path: "/parent",
+          element: <Parent />,
         },
       ],
     },
