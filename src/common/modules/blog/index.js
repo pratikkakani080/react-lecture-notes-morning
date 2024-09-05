@@ -1,8 +1,24 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useRef } from "react";
+import Button from "../../components/button";
 
 function Blog() {
-  return <div>This is blog component</div>;
+  const myRef = useRef(0);
+  console.log("myRef*******", myRef);
+
+  const handleOnChange = (e) => {
+    myRef.current = e.target.value;
+  };
+
+  return (
+    <div>
+      This is blog component
+      <input type="text" onChange={handleOnChange} />
+      <Button
+        ButtonText={"Click me"}
+        onClick={() => console.log(myRef.current)}
+      />
+    </div>
+  );
 }
 
 export default Blog;
