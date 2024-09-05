@@ -1,14 +1,13 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Button from "./common/components/button";
-import Dashboard from "./common/modules/dashboard";
-import Login from "./common/modules/login";
 import Routing from "./common/Routes";
+import MyContextProvider from "./common/lib/context/Providers/MyContextProvider";
 
 function App() {
   return (
     <div className="App">
-      <Routing />
+      <MyContextProvider>
+        <Routing />
+      </MyContextProvider>
     </div>
   );
 }

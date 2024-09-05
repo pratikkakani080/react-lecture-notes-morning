@@ -4,8 +4,6 @@ import Children2 from "./children2";
 
 function Parent() {
   const [value, setValue] = React.useState("");
-  console.log("value***", value);
-
   return (
     <div>
       this is parent comp

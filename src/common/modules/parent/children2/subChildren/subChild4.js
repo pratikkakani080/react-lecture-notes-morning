@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { getStoredData } from "../../../../utils/storage";
+import React, { useContext } from "react";
+import MyContext from "../../../../lib/context";
 
 function SubChild4(props) {
-
+  const { count } = useContext(MyContext);
   return (
     <div>
       SubChild4
       <br />
       {props.value}
+      <br />
+      {count}
     </div>
   );
 }
