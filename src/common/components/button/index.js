@@ -1,17 +1,15 @@
-import React from "react";
+import React, { forwardRef, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import "./button.css";
 
-export default function Button({
-  bgColor,
-  textColor,
-  className,
-  onClick,
-  ButtonText
-}) {
-  return (
-    <div>
+const Button = forwardRef(
+  ({ bgColor, textColor, className, onClick, ButtonText }, ref) => {
+    console.log("button re-rendering*****");
+
+    return (
+      <div>
         <button
+          ref={ref}
           style={{
             backgroundColor: bgColor || "grey",
             color: textColor || "white",
@@ -21,6 +19,13 @@ export default function Button({
         >
           {ButtonText}
         </button>
-    </div>
-  );
-}
+      </div>
+    );
+  }
+);
+
+export default memo(Button);
+
+// Higher order component || Higher order function
+// compnent or function that takes an another
+// component as an argument and return enhanced component
