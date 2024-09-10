@@ -22,3 +22,18 @@
 // Short hand property
 const key = 'value'
 const obj = { key }
+
+
+// Tasks to be completed
+        // Routing  
+                // prepare 8 - 10 routes
+                // with different functionalities
+                // with layout - header, footer, sidebar
+        // Calculator
+        // To Do list
+        // Authentication flow
+                // Protected routing
+        // Add to cart/wishlist/favorite
+                // use listing dummy API
+                        // product, food
+        // Portfolio

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../../components/button";
-import { storeData } from "../../utils/storage";
+import { getStoredData, storeData } from "../../utils/storage";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -44,8 +44,18 @@ function Login() {
 
   const handleSubmit = () => {
     if (validateForm()) {
-      storeData("userCreds", userInfo);
-      navigate("/dashboard");
+      const users = getStoredData("users");
+      if (
+        users.find(
+          (user) =>
+            user.email === userInfo.email && user.password === userInfo.password
+        )
+      ) {
+        storeData("userCreds", userInfo);
+        navigate("/dashboard");
+      } else {
+        alert("User not found");
+      }
     }
   };
 
