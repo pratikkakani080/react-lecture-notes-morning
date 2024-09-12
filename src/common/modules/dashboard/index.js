@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import Button from "../../components/button";
 import { getStoredData, storeData } from "../../utils/storage";
 
@@ -9,9 +9,13 @@ function Dashboard() {
   const [recipes, setRecipes] = useState({});
   const className_bgColor = "bgColor";
 
+  let [searchParams, setSearchParams] = useSearchParams();
+  const skip = searchParams.get("skip") || 0;
+  const limit = searchParams.get("limit") || 50;
+
   useEffect(() => {
     // write your logic here to execute on load
-    fetch("https://dummyjson.com/recipes?limit=50")
+    fetch(`https://dummyjson.com/recipes?limit=${limit}&skip=${skip}`)
       .then((res) => res.json())
       .then((result) => setRecipes(result))
       .catch((err) => console.log(err));

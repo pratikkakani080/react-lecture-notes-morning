@@ -38,7 +38,7 @@ function Routing() {
           element: <Blog />,
         },
         {
-          path: "/blog/blog-details",
+          path: "/blog/blog-details/:blogId",
           element: <BlogDetails />,
         },
         {

@@ -31,6 +31,8 @@ const obj = { key }
                 // with layout - header, footer, sidebar
         // Calculator
         // To Do list
+        // CRUD
+                // Create, Read, Update, Delete user list or task list
         // Authentication flow
                 // Protected routing
         // Add to cart/wishlist/favorite
