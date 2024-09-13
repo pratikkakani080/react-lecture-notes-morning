@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 function Layout() {
   return (
     <div>
-      This is layout component
+      Code has been changed directly
       <Outlet />
     </div>
   );
